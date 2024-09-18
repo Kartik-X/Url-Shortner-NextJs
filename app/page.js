@@ -1,3 +1,7 @@
 export default function Home() {
-  return <>url-shortner</>;
+  return (
+    <>
+      <div className="text-danger fs-5 text-center">url-shortner</div>
+    </>
+  );
 }
