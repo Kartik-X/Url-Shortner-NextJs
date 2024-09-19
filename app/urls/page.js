@@ -1,8 +1,8 @@
 async function fetchUrls() {
-  console.log("aaa", process.env.NEXT_PUBLIC_BASE_URL);
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/urls`, {
-    cache: "force-cache",
+    cache: "no-store",
   });
+
   if (!response.ok) {
     throw new Error("Failed to fetch urls");
   }
@@ -13,7 +13,6 @@ export default async function UrlList() {
   let urls;
   try {
     urls = await fetchUrls();
-    console.log("urllss", urls);
   } catch (error) {
     console.log(error);
     return (
@@ -29,8 +28,8 @@ export default async function UrlList() {
     );
   }
   return (
-    <div className="min-vh-100 d-flex flex-col align-items-center justify-content-center bg-light">
-      <div className="p-lg-2 bg-white rounded-lg shadow-lg mw-40n w-100">
+    <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light">
+      <div className="p-5 bg-light rounded-3 shadow-lg mw-40n w-50 ">
         <h1 className="fs-4 fw-bold mb-5 text-center text-muted">
           All short Urls
         </h1>
@@ -43,7 +42,7 @@ export default async function UrlList() {
               </tr>
             </thead>
             <tbody>
-              {urls.map((url) => {
+              {urls.response.map((url) => {
                 return (
                   <tr key={url._id}>
                     <td>{url.originalUrl}</td>
@@ -53,7 +52,7 @@ export default async function UrlList() {
                         target="_blank"
                         className="link link-primary"
                       >
-                        `${process.env.NEXT_PUBLIC_BASE_URL}/${url.shortUrl}`
+                        {`${process.env.NEXT_PUBLIC_BASE_URL}/${url.shortUrl}`}
                       </a>
                     </td>
                   </tr>
