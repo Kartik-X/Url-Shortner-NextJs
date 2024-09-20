@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { shortenUrl } from "./api/serverActions/shortenUrlAction";
 
 export default function Home() {
   return (
@@ -8,15 +9,17 @@ export default function Home() {
           <h1 className="fs-6  p-3 rounded-2 fw-bolder text-center text-bg-primary">
             URL SHORTNER
           </h1>
-
-          <form action="" className=""></form>
-          <input
-            type="text"
-            placeholder="Enter URL"
-            name="originalUrl"
-            className="form-control border border-2 border-primary"
-          />
-          <button className="btn btn-success">Shorten</button>
+          <form action={shortenUrl} className="">
+            <input
+              type="text"
+              placeholder="Enter URL"
+              name="originalUrl"
+              className="form-control border border-2 border-primary"
+            />
+            <button type="submit" className="btn btn-success">
+              Shorten
+            </button>
+          </form>
         </div>
         <div className="mt-4 text-center">
           <Link href="/urls">

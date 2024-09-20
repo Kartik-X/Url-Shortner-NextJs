@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 async function fetchUrls() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/urls`, {
-    cache: "no-store",
-  });
+    cache: "force-cache",
+  }); //no-store
 
   if (!response.ok) {
     throw new Error("Failed to fetch urls");
@@ -33,6 +35,9 @@ export default async function UrlList() {
         <h1 className="fs-4 fw-bold mb-5 text-center text-muted">
           All short Urls
         </h1>
+        <Link href="/" className="btn btn-primary pb-2 mb-4">
+          Go To Home
+        </Link>
         <div className="overflow-auto">
           <table className="table table-striped w-100">
             <thead>
@@ -42,22 +47,23 @@ export default async function UrlList() {
               </tr>
             </thead>
             <tbody>
-              {urls.response.map((url) => {
-                return (
-                  <tr key={url._id}>
-                    <td>{url.originalUrl}</td>
-                    <td>
-                      <a
-                        href={`/${url.shortUrl}`}
-                        target="_blank"
-                        className="link link-primary"
-                      >
-                        {`${process.env.NEXT_PUBLIC_BASE_URL}/${url.shortUrl}`}
-                      </a>
-                    </td>
-                  </tr>
-                );
-              })}
+              {urls.response &&
+                urls.response.map((url) => {
+                  return (
+                    <tr key={url._id}>
+                      <td>{url.originalUrl}</td>
+                      <td>
+                        <a
+                          href={`/${url.shortUrl}`}
+                          target="_blank"
+                          className="link link-primary"
+                        >
+                          {`${process.env.NEXT_PUBLIC_BASE_URL}/${url.shortUrl}`}
+                        </a>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>

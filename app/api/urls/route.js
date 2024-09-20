@@ -7,7 +7,7 @@ export async function GET() {
   response = NextResponse.json({ response });
   response.headers.set(
     "Cache-control",
-    "public,max-age=5 s-maxage=5,stale-while-revalidate-4"
+    "public,max-age=30 s-maxage=30,stale-while-revalidate-25"
   );
   return response;
 }

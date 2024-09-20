@@ -21,8 +21,7 @@ export class UrlShortnerService {
       url = await this.urlRepository.getUrlByShortUrl(shortUrl);
     }
 
-    await this.urlRepository.createUrl(originalUrl, shortUrl);
-    console.log("services", originalUrl);
+    await this.urlRepository.createUrl(originalUrl, `urls/${shortUrl}`);
     return shortUrl;
   }
 
