@@ -19,7 +19,7 @@ export default async function UrlList() {
     console.log(error);
     return (
       // create a different UI component
-      <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+      <div className="min-vh-100 d-flex align-items-center justify-content-center bg-white">
         <div className="p-xl-5 bg-white rounded-lg shadow-lg mw-50 w-50 rounded-2">
           <h1 className="fs-lg fw-bold mb-5 text-center text-muted">Error</h1>
           <p className="fs-4 fw-bold text-center text-danger">
@@ -31,7 +31,7 @@ export default async function UrlList() {
   }
   return (
     <div className="min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light">
-      <div className="p-5 bg-light rounded-3 shadow-lg mw-40n w-50 ">
+      <div className="p-5 bg-light rounded-3 shadow-lg mw-40 w-50 ">
         <h1 className="fs-4 fw-bold mb-5 text-center text-muted">
           All short Urls
         </h1>
